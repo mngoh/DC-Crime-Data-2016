@@ -423,11 +423,6 @@ function populateFilters() {
   add('f-category', allRows.map(r => r.mpd_charge_category).filter(Boolean));
   add('f-race',     allRows.map(r => r.race).filter(Boolean));
   add('f-sex',      allRows.map(r => r.sex).filter(Boolean));
-  add('f-month', [...new Set(allRows.map(r => r.month).filter(Boolean))]
-    .sort((a,b) => +a - +b)
-    .map(m => { const el = document.createElement('option'); el.value = m; el.textContent = MONTH_NAMES[+m-1] || m; return el; })
-    .map(el => el) // will be added manually below
-  );
 
   // Month filter — custom to show names
   const mSel = document.getElementById('f-month');
